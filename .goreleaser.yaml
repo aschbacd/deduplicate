@@ -1,0 +1,25 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+release:
+  github:
+    owner: aschbacd
+    name: deduplicate
+
+builds:
+  - env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - amd64
+
+archives:
+  - formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{- title .Os }}_{{ .Arch }}"
+
+changelog:
+  sort: asc
