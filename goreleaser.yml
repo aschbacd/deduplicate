@@ -1,0 +1,22 @@
+project_name: deduplicate
+release:
+  github:
+    owner: aschbacd
+
+builds:
+  - id: deduplicate
+    main: ./main.go
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+
+archives:
+  - format: tar.gz
+    files:
+      - LICENSE
+      - README.md
